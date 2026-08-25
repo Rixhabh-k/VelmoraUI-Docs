@@ -11,7 +11,7 @@ npm install velmora
 Import the Velmora stylesheet:
 
 ```jsx
-import "velmora/styles.css";
+import "velmora/style.css";
 ```
 
 Import components:
