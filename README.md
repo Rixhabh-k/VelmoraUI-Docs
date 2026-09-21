@@ -24,7 +24,12 @@ import {
   ThreeDButton,
   SubmitButton,
   PositionAwareButton,
-  UploadButton
+  UploadButton,
+  TypeWriterText,
+  TextScramble,
+  ShadowText,
+  WaveText,
+  MagicText
 } from "velmora";
 ```
 
@@ -38,7 +43,12 @@ import {
   ThreeDButton,
   SubmitButton,
   PositionAwareButton,
-  UploadButton
+  UploadButton,
+  TypeWriterText,
+  TextScramble,
+  ShadowText,
+  WaveText,
+  MagicText
 } from "velmora";
 
 import "velmora/styles.css";
@@ -61,6 +71,20 @@ function App() {
       </PositionAwareButton>
 
       <UploadButton />
+
+      <TypeWriterText />
+
+      <TextScramble />
+
+      <ShadowText>
+        COLORS
+      </ShadowText>
+
+      <WaveText>
+        WAVES
+      </WaveText>
+
+      <MagicText />
     </div>
   );
 }
@@ -282,7 +306,7 @@ Props:
 
 | Prop               | Default          | Description                        |
 | ------------------ | ---------------- | ---------------------------------- |
-| `filename`         | `"File.pdf"`     | File name displayed by the button  |
+| `filename`         | `"File.pdf"`     | File name displayed by the button |
 | `buttonText`       | `"Upload"`       | Initial button label               |
 | `uploadingText`    | `"Uploading..."` | Label shown during upload          |
 | `completedText`    | `"Completed"`    | Label shown after upload completes |
@@ -291,6 +315,155 @@ Props:
 | `buttonColor`      | `"#3bafda"`      | Button background color            |
 | `progressColor`    | `"#2d334c"`      | Upload progress color              |
 | `className`        | `""`             | Custom CSS class                   |
+
+# Text Components
+
+## TypeWriter Text
+
+A typewriter-style text animation that types, pauses, and deletes phrases before moving to the next phrase.
+
+```jsx
+<TypeWriterText
+  words={["Hello", "World", "Velmora"]}
+  typingSpeed={100}
+  deletingSpeed={50}
+  pauseDuration={1000}
+  className="typewriter-text"
+/>
+```
+
+Props:
+
+| Prop             | Default | Description                       |
+| ---------------- | ------- | --------------------------------- |
+| `words`          | `[]`    | Array of words or phrases         |
+| `typingSpeed`    | `100`   | Typing speed in milliseconds      |
+| `deletingSpeed`  | `50`    | Deleting speed in milliseconds    |
+| `pauseDuration`  | `1000`  | Pause duration in milliseconds    |
+| `className`      | `""`    | Custom CSS class                  |
+
+## Text Scramble
+
+A text scrambling effect that transitions between phrases using randomized characters.
+
+```jsx
+<TextScramble
+  phrases={[
+    "Build",
+    "Create",
+    "Animate"
+  ]}
+  pauseDuration={800}
+  className="scramble-text"
+/>
+```
+
+Props:
+
+| Prop            | Default | Description                        |
+| --------------- | ------- | ---------------------------------- |
+| `phrases`       | `[]`    | Array of phrases to cycle through  |
+| `pauseDuration` | `800`   | Pause duration in milliseconds     |
+| `className`     | `""`    | Custom CSS class                   |
+
+## Shadow Text
+
+A mouse-reactive text effect where the shadow follows the cursor with smooth movement and dynamic color.
+
+```jsx
+<ShadowText
+  shadowOffset={100}
+  shadowOpacity={0.5}
+  shadowSaturation={50}
+  shadowLightness={50}
+  smoothing={0.08}
+  className="shadow-text"
+>
+  COLORS
+</ShadowText>
+```
+
+Props:
+
+| Prop               | Default   | Description                |
+| ------------------ | --------- | -------------------------- |
+| `children`         | `"COLORS"` | Text content              |
+| `shadowOffset`     | `100`     | Shadow movement range      |
+| `shadowOpacity`    | `0.5`     | Shadow opacity             |
+| `shadowSaturation` | `50`      | Shadow color saturation    |
+| `shadowLightness`  | `50`      | Shadow color lightness     |
+| `smoothing`        | `0.08`    | Movement smoothness        |
+| `className`        | `""`      | Custom CSS class           |
+
+## Wave Text
+
+A layered 3D text effect with multiple colored text copies that react smoothly to cursor movement.
+
+```jsx
+<WaveText
+  colors={[
+    "#f24c00",
+    "#9792e3",
+    "#fc7a1e",
+    "#eda96d"
+  ]}
+  depth={12}
+  rotate={3}
+  skew={3}
+  perspective={500}
+  smoothing={0.2}
+  className="wave-text"
+>
+  WAVES
+</WaveText>
+```
+
+Props:
+
+| Prop          | Default     | Description                    |
+| ------------- | ----------- | ------------------------------ |
+| `children`    | `"WAVES"`   | Text content                   |
+| `colors`      | `4 colors`  | Colors used for text layers    |
+| `depth`       | `12`        | Depth between text layers      |
+| `rotate`      | `3`         | Rotation intensity             |
+| `skew`        | `3`         | Skew intensity                 |
+| `perspective` | `500`       | 3D perspective distance       |
+| `smoothing`   | `0.2`       | Cursor movement smoothness     |
+| `className`   | `""`        | Custom CSS class               |
+
+## Magic Text
+
+A highlighted text effect with animated gradient colors and randomly appearing decorative stars.
+
+```jsx
+<MagicText
+  beforeText="Sometimes I'll start a line of code and I"
+  magicText="don't even know"
+  afterText="where it's going."
+  colors={[
+    "#7b1fa2",
+    "#673ab7",
+    "#f48fb1"
+  ]}
+  starCount={3}
+  starInterval={1000}
+  starSize={24}
+  className="magic-text"
+/>
+```
+
+Props:
+
+| Prop           | Default     | Description                     |
+| -------------- | ----------- | ------------------------------- |
+| `beforeText`   | `""`        | Text displayed before the effect |
+| `magicText`    | `""`        | Main animated text              |
+| `afterText`    | `""`        | Text displayed after the effect  |
+| `colors`       | `3 colors`  | Gradient colors                 |
+| `starCount`    | `3`         | Number of decorative stars      |
+| `starInterval` | `1000`      | Star animation interval in ms   |
+| `starSize`     | `24`        | Star size in pixels             |
+| `className`    | `""`        | Custom CSS class                |
 
 # Current Components
 
@@ -303,6 +476,14 @@ Props:
 * Submit Button
 * Position Aware Button
 * Upload Button
+
+## Text Components
+
+* TypeWriter Text
+* Text Scramble
+* Shadow Text
+* Wave Text
+* Magic Text
 
 # Animation Philosophy
 
